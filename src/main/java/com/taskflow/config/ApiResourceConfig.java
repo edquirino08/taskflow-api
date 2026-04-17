@@ -6,9 +6,9 @@ import org.glassfish.jersey.server.ResourceConfig;
 import com.taskflow.controller.user.UserController;
 
 public class ApiResourceConfig extends ResourceConfig {
-    public ApiResourceConfig() {
+    public ApiResourceConfig(JpaUnit jpaUnit) {
         register(JacksonFeature.class);
         register(UserController.class);
-        register(new DependencyBinder());
+        register(new DependencyBinder(jpaUnit));
     }
 }

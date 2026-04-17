@@ -1,6 +1,6 @@
 package com.taskflow.controller.user.dto;
 
-public class PrintUserDto {
+public class CreateUserDto {
     private String name;
     private int age;
     private String gender;

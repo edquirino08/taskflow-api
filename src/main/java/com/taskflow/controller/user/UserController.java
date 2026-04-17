@@ -1,6 +1,6 @@
 package com.taskflow.controller.user;
 
-import com.taskflow.controller.user.dto.PrintUserDto;
+import com.taskflow.controller.user.dto.CreateUserDto;
 import com.taskflow.service.UserService;
 
 import jakarta.inject.Inject;
@@ -24,8 +24,8 @@ public class UserController {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response printUser(PrintUserDto printUserDto) {
-        userService.printUser(printUserDto);
+    public Response printUser(CreateUserDto createUserDto) {
+        userService.createUser(createUserDto);
         return Response.noContent().build();
     }
 }

@@ -8,12 +8,16 @@ import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.servlet.ServletContainer;
 
 import com.taskflow.config.ApiResourceConfig;
+import com.taskflow.config.JpaUnit;
 
 public class App {
     private static final Logger LOGGER = Logger.getLogger(App.class.getName());
 
     public static void main(String[] args) throws Exception {
-        ResourceConfig config = new ApiResourceConfig();
+        JpaUnit jpaUnit = new JpaUnit();
+        Runtime.getRuntime().addShutdownHook(new Thread(jpaUnit::close, "jpa-unit-shutdown"));
+
+        ResourceConfig config = new ApiResourceConfig(jpaUnit);
         int port = resolvePort();
 
         Tomcat tomcat = new Tomcat();
